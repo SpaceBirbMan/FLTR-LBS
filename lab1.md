@@ -74,8 +74,7 @@ In a nutshell, install in this order:
 It's just useful for working with git.
 
 #### 4. Let's get this party started!
-In vscode you click on upper center line - **it's command pallete** or press **F1**, start typing "Flutter: New Project", choose whatever you need next
-And you can type:
+In vscode you click on upper center line - **it's command pallete** or press **F1**, start typing "Flutter: New Project", choose whatever you need next. Then you can type:
 ```powershell
 flutter create my_app
 ```
