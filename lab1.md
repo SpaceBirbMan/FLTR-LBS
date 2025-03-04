@@ -86,3 +86,4 @@ flutter create my_app
 ```
 Enjoy!
 
+##### Or you can use this guide: https://docs.flutter.dev/get-started
