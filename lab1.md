@@ -34,11 +34,12 @@ Second, you need to install git (not github or something looks kinda similar, ex
 [√] Connected device (2 available)
 [√] Network resources
 ```
-
+There you can see, what you need to install also (Chrome, VS, etc.).
 
 **Git** need you for saving your work on github or local, **Command line tools - for installation AndroidSDK, it is NOT ASDK!**
 
-##### [cmdline-tools](https://developer.android.com/studio?hl=ru#command-tools)
+
+##### [cmdline-tools (that link and "2.1" in this guide neccessary only if you don't want to install Android Studio)](https://developer.android.com/studio?hl=ru#command-tools)
 ##### [git](https://git-scm.com/downloads/win)
 
 #### 2.1 ASDK
@@ -64,6 +65,11 @@ It means you have wrong ierarchy of folders in Android folder.
 
 If you did this right, manager ask you to accept some licenses and that all. After installation you can type **flutter doctor** again and if needed **flutter doctor --android-licenses**
 
+Also it have to be nice install NDK
+```powershell
+sdkmanager --install "ndk;26.3.11579264"
+```
+
 #### 3 Unnecessary installations
 In a nutshell, install in this order:
 
@@ -71,7 +77,7 @@ In a nutshell, install in this order:
 ##### [kdiff3](https://kdiff3.sourceforge.net/)
 ##### [gitExtensions](https://gitextensions.github.io/)
 
-It's just useful for working with git.
+It's just useful.
 
 #### 4. Let's get this party started!
 In vscode you click on upper center line - **it's command pallete** or press **F1**, start typing "Flutter: New Project", choose whatever you need next. Then you can type:
