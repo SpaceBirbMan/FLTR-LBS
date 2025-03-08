@@ -11,6 +11,7 @@
 .svn/
 .swiftpm/
 migrate_working_dir/
+Oracle_JDK-23/
 
 # IntelliJ related
 *.iml
