@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class Panel1 extends StatefulWidget {
+  const Panel1({super.key});
+
   @override
   _Panel1State createState() => _Panel1State();
 }
@@ -17,7 +19,7 @@ class _Panel1State extends State<Panel1> {
       children: [
         Container(
           padding: EdgeInsets.only(top: paddingForIcons),
-          child: Icon(Icons.home, color: Colors.black),
+          child: Icon(Icons.home, color: Colors.white),
         ),
         Container(
           padding: EdgeInsets.only(top: paddingForIcons),
@@ -25,7 +27,7 @@ class _Panel1State extends State<Panel1> {
         ),
         Container(
           padding: EdgeInsets.only(top: paddingForIcons),
-          child: Icon(Icons.abc_sharp, color: Colors.black),
+          child: Icon(Icons.abc_sharp, color: Colors.red),
         ),
       ],
     );
@@ -33,7 +35,7 @@ class _Panel1State extends State<Panel1> {
     return Container(
     color: Colors.red[100],
     alignment: Alignment.centerLeft,
-    padding: EdgeInsets.all(20),
+    padding: EdgeInsets.all(15),
     child: 
     Column(
       crossAxisAlignment: CrossAxisAlignment.start,
