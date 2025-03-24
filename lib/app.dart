@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'panels/panel1.dart' as panel1;
-import 'panels/panel2.dart' as panel2;
+import 'panels/panel2/panel2.dart' as panel2;
 import 'panels/panel3.dart' as panel3;
 
 class App extends StatefulWidget {
