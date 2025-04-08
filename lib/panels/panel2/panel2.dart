@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'panel2_cubit.dart';
+import 'cubit/panel2_cubit.dart';
 import 'panel2_1.dart';
 import 'panel2_2.dart';
 
