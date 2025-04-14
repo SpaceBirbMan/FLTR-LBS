@@ -1,7 +1,10 @@
 import 'cubit/panel2_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'panel2_3.dart';
+import 'cubit/panel2_history_cubit.dart';
 
+// На первом экране в leading AppBar добавить IconButton, и при нажатии на нее используя класс Navigator открыть новый экран с результатами. 
 class Panel2_1 extends StatefulWidget {
   final formKey = GlobalKey<FormState>();
 
@@ -34,7 +37,7 @@ class Panel2_1State extends State<Panel2_1> {
     if (widget.formKey.currentState!.validate() && agreedToTerms.value) {
       final cubit = BlocProvider.of<Panel2Cubit>(context);
       
-      cubit.updateData(
+      cubit.saveData(
         double.parse(capitalController.text),
         int.parse(durationController.text),
         double.parse(rateController.text),
@@ -45,8 +48,31 @@ class Panel2_1State extends State<Panel2_1> {
   }
 
   @override
-  Widget build(BuildContext context) {
-    return BlocBuilder<Panel2Cubit, Panel2State>(
+  @override
+Widget build(BuildContext context) {
+  return Scaffold(
+    appBar: AppBar( // Добавлено ради кнопки
+      title: const Text("Investment Calculator"),
+      leading: Builder(
+  builder: (innerContext) {
+    return IconButton(
+      icon: const Icon(Icons.show_chart),
+      onPressed: () {
+        Navigator.push(
+          innerContext,
+          MaterialPageRoute(
+            builder: (_) => BlocProvider.value(
+              value: BlocProvider.of<HistoryCubit>(innerContext),
+              child: const Panel2_3(),
+                  ),
+                ),
+              );
+            },
+          );
+        },
+      ),
+    ),
+    body: BlocBuilder<Panel2Cubit, Panel2State>(
       builder: (context, state) {
         return Padding(
           padding: const EdgeInsets.all(16.0),
@@ -119,6 +145,7 @@ class Panel2_1State extends State<Panel2_1> {
           ),
         );
       },
-    );
-  }
+    ),
+  );
+}
 }

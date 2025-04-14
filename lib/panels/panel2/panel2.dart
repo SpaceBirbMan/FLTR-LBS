@@ -3,6 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'cubit/panel2_cubit.dart';
 import 'panel2_1.dart';
 import 'panel2_2.dart';
+import 'panel2_3.dart';
+import 'cubit/panel2_history_cubit.dart';
 
 /// Основной класс панелек
 class Panel2 extends StatefulWidget {
@@ -25,11 +27,16 @@ class _Panel2State extends State<Panel2> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => Panel2Cubit(),
-      child: BlocBuilder<Panel2Cubit, Panel2State>(
-        builder: (context, state) {
-          if (state is! Panel2Data) return const SizedBox.shrink();
+     return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (context) => Panel2Cubit()),
+        BlocProvider(create: (context) => HistoryCubit()),
+      ],
+      child: Builder(
+        builder: (context) {
+          return BlocBuilder<Panel2Cubit, Panel2State>(
+            builder: (context, state) {
+              if (state is! Panel2Data) return const SizedBox.shrink();
 
           if (_pageController.hasClients && _pageController.page?.round() != state.currentPanelIndex) {
             _pageController.animateToPage(
@@ -50,31 +57,34 @@ class _Panel2State extends State<Panel2> {
                     children: [ // сюда загружаем экраны
                       Panel2_1(),
                       Panel2_2(),
+                      Panel2_3(),
                     ],
                   ),
                 ),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [ // здесь работает переключение, правда вручную, то есть нужно добавлять обработки переключений вместе с новыми экранами
-                    IconButton(
-                      icon: const Icon(Icons.arrow_back),
-                      onPressed: state.currentPanelIndex > 0
-                          ? () => context.read<Panel2Cubit>().switchPanel(0)
-                          : null,
-                    ),
-                    IconButton(
-                      icon: const Icon(Icons.arrow_forward),
-                      onPressed: (state.currentPanelIndex < 1 && state.isCalculated)
-                          ? () => context.read<Panel2Cubit>().switchPanel(1)
-                          : null,
-                    ),
-                  ],
-                ),
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          IconButton(
+                            icon: const Icon(Icons.arrow_back),
+                            onPressed: state.currentPanelIndex > 0
+                                ? () => context.read<Panel2Cubit>().switchPanel(state.currentPanelIndex - 1)
+                                : null,
+                          ),
+                          IconButton(
+                            icon: const Icon(Icons.arrow_forward),
+                            onPressed: (state.currentPanelIndex < 2 && state.isCalculated)
+                                ? () => context.read<Panel2Cubit>().switchPanel(state.currentPanelIndex + 1)
+                                : null,
+                          ),
+                        ],
+                      ),
               ],
             ),
           );
         },
-      ),
-    );
+      );
+        },
+     ),
+     );
   }
 }
