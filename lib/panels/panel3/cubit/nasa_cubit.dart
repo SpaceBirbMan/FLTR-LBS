@@ -8,7 +8,7 @@ class NasaCubit extends Cubit<NasaState> {
 
  Future<void> loadData() async {
   try {
-    Map<String, dynamic> apiData = await getNasaData('opportunity', '100', 'eQnprvXukgfNomTanZiHT1DqLApcABzFjI350dyZ');
+    Map<String, dynamic> apiData = await getNasaData('curiosity', '100', 'eQnprvXukgfNomTanZiHT1DqLApcABzFjI350dyZ');
     Nasa nasaData = Nasa.fromJson(apiData);
     emit(NasaLoadedState(data: nasaData));
   } catch(_) {

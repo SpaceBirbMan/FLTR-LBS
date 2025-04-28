@@ -27,8 +27,8 @@ class Panel3 extends StatelessWidget {
                       return _buildPlaceholder(null);
                     }
                     return SizedBox(
-                      height: 200,
-                      width: 200,
+                      height: 500,
+                      width: 500,
                       child: Image.network(
                         photo!.imgSrc!,
                         loadingBuilder: (context, child, loadingProgress) {
@@ -54,7 +54,7 @@ class Panel3 extends StatelessWidget {
     );
   }
 
-  Widget _buildPlaceholder(var imgSrc) { // Картинки с Оппортьюниити больше недоступны, ссыылки ведут на сайт по роверам
+  Widget _buildPlaceholder(var imgSrc) {
     return Container(
       height: 200,
       width: 200,
